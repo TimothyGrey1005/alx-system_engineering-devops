@@ -41,14 +41,14 @@ defaults
 frontend http
         bind *:80
         http-request set-header X-Forwarded-Proto http
-        default_backend web-backend
+        default_backend gopane.tech-backend
 
-frontend www-https
+frontend gopane.tech
         bind *:443 ssl crt /etc/haproxy/ssl/www.gopane.tech.pem
         http-request set-header X-Forwarded-Proto https
-        default_backend web-backend
+        default_backend gopane.tech-backend
 
-backend web-backend
+backend gopane.tec-_backend
         balance roundrobin
         redirect scheme https if !{ ssl_fc }
         server 938-web-01 54.89.24.152:80 check
